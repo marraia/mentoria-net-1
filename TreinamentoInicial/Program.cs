@@ -1,4 +1,7 @@
-﻿using System.Linq.Expressions;
+﻿using BenchmarkDotNet.Attributes;
+using System;
+using System.Linq.Expressions;
+using System.Reflection;
 using TreinamentoInicial;
 
 /*int numero1 = 0;
@@ -71,7 +74,7 @@ media = Math.Round(media);
 Console.WriteLine($"Sua média total nesse boletim ,{nome} é de : {media}");
 Console.WriteLine("Aperte qualquer tecla para sair");*/
 
-bool executado = false;
+/*bool executado = false;
 
 
     Console.WriteLine("Calculadora");
@@ -123,7 +126,43 @@ do
     }
 }
 while (!executado);
+*/
+
+var nomes = new List<string>();
+nomes.Add("Fernando"); //0
+nomes.Add("Melissa"); //1
+nomes.Add("DotNet"); //2
 
 
+foreach (var item in nomes)
+{
+    Console.WriteLine($"Nome: {item}");
+}
+
+for (var index = 0; index < nomes.Count; index++)
+{
+    var nomePessoa = nomes[index];
+    Console.WriteLine($"Nomes {nomePessoa}");
+}
+
+for (var index = 0; index <= 100; index++)
+{
+    Console.WriteLine($"Valor do index {index}");
+}
+
+var index1 = 0;
+do
+{
+    index1++;
+    Console.WriteLine($"Valor do index1 {index1}");
+} while (index1 < 100);
+
+var index2 = 0;
+
+while (index2 < 100)
+{
+    index2++;
+    Console.WriteLine($"Valor do index2 {index2}");
+}
 
 
