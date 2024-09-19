@@ -2,6 +2,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.Serialization;
 using TreinamentoInicial;
 
 /*int numero1 = 0;
@@ -73,8 +74,8 @@ media = Math.Round(media);
 
 Console.WriteLine($"Sua média total nesse boletim ,{nome} é de : {media}");
 Console.WriteLine("Aperte qualquer tecla para sair");*/
-
-/*bool executado = false;
+/*
+ bool executado = false;
 
 
     Console.WriteLine("Calculadora");
@@ -126,9 +127,111 @@ do
     }
 }
 while (!executado);
-*/
+ */
 
-var nomes = new List<string>();
+bool executado = false;
+
+
+    Console.WriteLine("Calculadora");
+    Console.WriteLine("--------------------------");
+    Console.WriteLine("Digite o 1º número: ");
+    var n1 = float.Parse(Console.ReadLine());
+    Console.WriteLine("Digite o 2º número: ");
+    var n2 = float.Parse(Console.ReadLine());
+do
+{
+    Console.WriteLine("---------------------------");
+    Console.WriteLine("Como você quer calcular?");
+    Console.WriteLine("Opções: ");
+    Console.WriteLine("\ta - Adição");
+    Console.WriteLine("\ts - Subtração");
+    Console.WriteLine("\tm - Multiplicação");
+    Console.WriteLine("\td - Divisão");
+
+
+    var calcular = Console.ReadLine();
+
+    switch (calcular)
+    {
+        case "a":
+            Console.WriteLine($"O resultado entre {n1} + {n2} é: " + (n1+n2));
+            var soma = n1+n2;
+            for (var i =0; i <= soma; i++)
+            {
+                if(i % 2 == 0 )
+                {
+                    Console.WriteLine($"O numero {i} é par");
+                }else
+                {
+                    Console.WriteLine($"O numero {i} é Impar");
+                }
+            }
+            executado = true;
+                break;
+        case "s":
+            Console.WriteLine($"O resultado entre {n1} - {n2} é: " + (n1-n2));
+            var subtraçao = n1-n2;
+            for (var i = 0; i <= subtraçao; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine($"O numero {i} é par");
+                }
+                else
+                {
+                    Console.WriteLine($"O numero {i} é Impar");
+                }
+            }
+            executado = true;
+            break;
+        case "m":
+            Console.WriteLine($"O resultado entre {n1} x {n2} é: " + (n1*n2));
+            var multiplicaçao = n1*n2;
+            for (var i = 0; i <= multiplicaçao; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine($"O numero {i} é par");
+                }
+                else
+                {
+                    Console.WriteLine($"O numero {i} é Impar");
+                }
+            }
+            executado = true;
+            break;
+        case "d":
+            while (n2 == 0)
+            {
+                Console.WriteLine("Entre com um número maior que 0 :");
+                n2 = Convert.ToSingle(Console.ReadLine()); //esse trecho de código garante que n2 não seja zero antes de realizar a divisão, evitando um erro de divisão por zero.
+            }
+            Console.WriteLine($"O resultado entre {n1} : {n2} é: " + (n1/n2));
+            var divisao = n1/n2;
+            for (var i = 0; i <= divisao; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine($"O numero {i} é par");
+                }
+                else
+                {
+                    Console.WriteLine($"O numero {i} é Impar");
+                }
+            }
+            executado = true;
+            break;
+        default:
+            Console.WriteLine("Valor digitado inválido, digite novamente: ");
+            break;
+
+    }
+}
+while (!executado);
+
+
+
+/*var nomes = new List<string>();
 nomes.Add("Fernando"); //0
 nomes.Add("Melissa"); //1
 nomes.Add("DotNet"); //2
@@ -164,5 +267,5 @@ while (index2 < 100)
     index2++;
     Console.WriteLine($"Valor do index2 {index2}");
 }
-
+*/
 
