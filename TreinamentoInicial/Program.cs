@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -129,7 +130,10 @@ do
 while (!executado);
  */
 
-bool executado = false;
+
+
+//Calculadora
+/*bool executado = false;
 
 
     Console.WriteLine("Calculadora");
@@ -227,10 +231,10 @@ do
 
     }
 }
-while (!executado);
+while (!executado);*/
 
 
-
+//For e Foreach
 /*var nomes = new List<string>();
 nomes.Add("Fernando"); //0
 nomes.Add("Melissa"); //1
@@ -269,3 +273,52 @@ while (index2 < 100)
 }
 */
 
+//par ou ímpar
+/*
+Console.Write("Digite qualquer valor: ");
+var valor = Convert.ToInt32(Console.ReadLine());
+
+for(var i = 0; i <= valor; i++)
+{
+    if(i % 2==0)
+    {
+        Console.WriteLine($"{i}É par");
+    }else
+    {
+        Console.WriteLine($"{i}É ímpar");
+    }
+}
+
+
+int[] arrai= {1,3,4,5,7,7,8,6,7,0,9,5,5,33,2,1,};
+
+
+Console.WriteLine("Qual número que voce quer contar?");
+var numero = Convert.ToInt32(Console.ReadLine());
+var qtdN = 0;
+foreach(var valor in arrai)
+{
+    if(valor == numero)
+    {
+        qtdN++;
+    }
+    Console.Write(valor);
+}
+Console.WriteLine($"O valor {numero} foi encontrado {qtdN} vezes no Array.");*/
+
+int[] listaDeNumeros = { 10,5,6,3,22,88,9 };
+var numeroMaior = listaDeNumeros[0];
+var numeroMenor = listaDeNumeros[0];
+foreach (var lista in listaDeNumeros)
+{
+    if (lista > numeroMaior)
+    {
+        numeroMaior = lista;
+    }
+    
+    if(lista < numeroMenor)
+    {
+        numeroMenor = lista;
+    }
+}
+Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor é : {numeroMenor}");
