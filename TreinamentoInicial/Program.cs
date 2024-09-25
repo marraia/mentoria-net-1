@@ -307,7 +307,7 @@ foreach(var valor in arrai)
 Console.WriteLine($"O valor {numero} foi encontrado {qtdN} vezes no Array.");*/
 
 int[] listaDeNumeros = { 10,5,6,3,22,88,9 };
-var numeroMaior = listaDeNumeros[0];
+var numeroMaior = listaDeNumeros[0];//ele inicia a variavel com o valor na posição 0
 var numeroMenor = listaDeNumeros[0];
 foreach (var lista in listaDeNumeros)
 {
@@ -321,4 +321,4 @@ foreach (var lista in listaDeNumeros)
         numeroMenor = lista;
     }
 }
-Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor é : {numeroMenor}");
+Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor  é : {numeroMenor}");
