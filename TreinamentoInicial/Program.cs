@@ -133,7 +133,7 @@ while (!executado);
 
 
 //Calculadora
-/*bool executado = false;
+bool executado = false;
 
 
     Console.WriteLine("Calculadora");
@@ -160,49 +160,17 @@ do
         case "a":
             Console.WriteLine($"O resultado entre {n1} + {n2} é: " + (n1+n2));
             var soma = n1+n2;
-            for (var i =0; i <= soma; i++)
-            {
-                if(i % 2 == 0 )
-                {
-                    Console.WriteLine($"O numero {i} é par");
-                }else
-                {
-                    Console.WriteLine($"O numero {i} é Impar");
-                }
-            }
-            executado = true;
-                break;
+            executado = VerificarParOuImpar(soma);
+            break;
         case "s":
             Console.WriteLine($"O resultado entre {n1} - {n2} é: " + (n1-n2));
             var subtraçao = n1-n2;
-            for (var i = 0; i <= subtraçao; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine($"O numero {i} é par");
-                }
-                else
-                {
-                    Console.WriteLine($"O numero {i} é Impar");
-                }
-            }
-            executado = true;
+            executado = VerificarParOuImpar(subtraçao);
             break;
         case "m":
             Console.WriteLine($"O resultado entre {n1} x {n2} é: " + (n1*n2));
             var multiplicaçao = n1*n2;
-            for (var i = 0; i <= multiplicaçao; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine($"O numero {i} é par");
-                }
-                else
-                {
-                    Console.WriteLine($"O numero {i} é Impar");
-                }
-            }
-            executado = true;
+            executado = VerificarParOuImpar(multiplicaçao);
             break;
         case "d":
             while (n2 == 0)
@@ -212,18 +180,7 @@ do
             }
             Console.WriteLine($"O resultado entre {n1} : {n2} é: " + (n1/n2));
             var divisao = n1/n2;
-            for (var i = 0; i <= divisao; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine($"O numero {i} é par");
-                }
-                else
-                {
-                    Console.WriteLine($"O numero {i} é Impar");
-                }
-            }
-            executado = true;
+            executado = VerificarParOuImpar(divisao);
             break;
         default:
             Console.WriteLine("Valor digitado inválido, digite novamente: ");
@@ -231,7 +188,31 @@ do
 
     }
 }
-while (!executado);*/
+while (!executado);
+
+bool VerificarParOuImpar(float numero)
+{
+    try
+    {
+        for (var i = 0; i <= numero; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Console.WriteLine($"O numero {i} é par");
+            }
+            else
+            {
+                Console.WriteLine($"O numero {i} é Impar");
+            }
+        }
+
+        return true;
+    }
+    catch(Exception ex)
+    {
+        return false;
+    }
+}
 
 
 //For e Foreach
@@ -305,7 +286,7 @@ foreach(var valor in arrai)
     Console.Write(valor);
 }
 Console.WriteLine($"O valor {numero} foi encontrado {qtdN} vezes no Array.");*/
-
+/*
 int[] listaDeNumeros = { 10,5,6,3,22,88,9 };
 var numeroMaior = listaDeNumeros[0];
 var numeroMenor = listaDeNumeros[0];
@@ -321,4 +302,4 @@ foreach (var lista in listaDeNumeros)
         numeroMenor = lista;
     }
 }
-Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor é : {numeroMenor}");
+Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor é : {numeroMenor}");*/
