@@ -306,4 +306,3 @@ foreach (var lista in listaDeNumeros)
 Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor  é : {numeroMenor}");
 =======
 Console.WriteLine($"O numero maioe é : {numeroMaior} e o numero menor é : {numeroMenor}");*/
->>>>>>> db640620d86379420f8abefab0bd65f986ef259e
