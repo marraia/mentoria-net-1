@@ -28,40 +28,59 @@ do
             calculadora.Somar();
             var soma = calculadora.Visor;
 
-            Console.WriteLine($"O resultado entre {n1} + {n2} é: {(soma)}");
+            Console.WriteLine($"O resultado é: {soma}");
 
-            executado = calculadora.VerificarParOuImpar();
+            executado = true;
+
+            //Exibir o historico
+            calculadora.ExibirHistorico();
+
+
             break;
         case "s":
             calculadora.CalcularNumeros();
-            calculadora.Substrair();
+            calculadora.Subtrair();
             var subtracao = calculadora.Visor;
 
-            Console.WriteLine($"O resultado entre {n1} - {n2} é: {(subtracao)}");
+            Console.WriteLine($"O resultado é: {subtracao}");
 
-            executado = calculadora.VerificarParOuImpar();
+             executado = true;
+
+            //Exibir o historico
+            calculadora.ExibirHistorico();
+
             break;
         case "m":
             calculadora.CalcularNumeros();
             calculadora.Multiplicar();
             var multiplicar = calculadora.Visor;
 
-            Console.WriteLine($"O resultado entre {n1} * {n2} é: {(multiplicar)}");
-            executado = calculadora.VerificarParOuImpar();
+            Console.WriteLine($"O resultado é: {multiplicar}");
+            executado=true;
+
+            //Exibir o historico
+            calculadora.ExibirHistorico();
+
             break;
         case "d":
             calculadora.CalcularNumeros();
             calculadora.Divisão();
             var dividir = calculadora.Visor;
 
-            Console.WriteLine($"O resultado entre {n1} / {n2} é: {(dividir)} ");
-            executado = calculadora.VerificarParOuImpar();
+            Console.WriteLine($"O resultado é: {dividir}");
+            executado = true;
+            //Exibir o historico
+            calculadora.ExibirHistorico();
             break;
+
 
         default:
             Console.WriteLine("Valor digitado inválido, digite novamente: ");
             break;
 
+           
     }
+   
 }
 while (!executado);
+

@@ -61,20 +61,6 @@ var total = v1 -v2;
 Console.WriteLine($"Voce tem {total} Restantes...");*/
 
 
-/*Console.WriteLine("Boletim 2024");
-Console.WriteLine("--------------------------");
-Console.WriteLine("Digite seu nome:");
-string nome = Console.ReadLine();
-Console.WriteLine("Digite sua 1º nota: ");
-//var nota1 = double.Parse(Console.ReadLine());
-double nota1 = double.Parse(Console.ReadLine());
-Console.WriteLine("Digite sua segunda nota: ");
-double nota2 = double.Parse(Console.ReadLine());
-double media = (nota1 + nota2) / 2;
-media = Math.Round(media);
-
-Console.WriteLine($"Sua média total nesse boletim ,{nome} é de : {media}");
-Console.WriteLine("Aperte qualquer tecla para sair");*/
 /*
  bool executado = false;
 
