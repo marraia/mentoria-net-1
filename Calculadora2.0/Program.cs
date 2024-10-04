@@ -8,22 +8,31 @@ var calculadora = new Calculadora();
 
 do
 {
-    Console.WriteLine("Digite o 1º número: ");
-    var a = float.Parse(Console.ReadLine());
-    Console.WriteLine("Digite o 2º número: ");
-    var b = float.Parse(Console.ReadLine());
+    Console.WriteLine("Como deseja começar?");
+    Console.WriteLine("\tc - Quero usar a calculadora");
+    Console.WriteLine("\to - Outro:");
+    var CouO = Console.ReadLine();
+    if (CouO == "c") {
+        Console.WriteLine("Digite o 1º número: ");
+        var a = float.Parse(Console.ReadLine());
+        Console.WriteLine("Digite o 2º número: ");
+        var b = float.Parse(Console.ReadLine());
+        calculadora.SetarValores(a, b);
 
-    calculadora.SetarValores(a, b);
-
-    Console.WriteLine("---------------------------");
-    Console.WriteLine("Como você quer calcular?");
-    Console.WriteLine("Opções: ");
-    Console.WriteLine("\ta - Adição");
-    Console.WriteLine("\ts - Subtração");
-    Console.WriteLine("\tm - Multiplicação");
-    Console.WriteLine("\td - Divisão");
-    Console.WriteLine("\th - Historico de operaçoes");
-    Console.WriteLine("\tf - Finalizar");
+        Console.WriteLine("---------------------------");
+        Console.WriteLine("Que operação deseja fazer?");
+        Console.WriteLine("Opções: ");
+        Console.WriteLine("\ta - Adição");
+        Console.WriteLine("\ts - Subtração");
+        Console.WriteLine("\tm - Multiplicação");
+        Console.WriteLine("\td - Divisão");
+    }
+    else
+    {
+        Console.WriteLine("\th - Historico de operaçoes");
+        
+        Console.WriteLine("\tf - Finalizar");
+    }
 
     var calcular = Console.ReadLine();
     switch (calcular)
@@ -58,6 +67,7 @@ do
 
             Console.WriteLine(historico);
             break;
+        
         case "f":
             Console.WriteLine("Obrigado por usar a minha calculadora!");
             executado = true;
@@ -66,6 +76,9 @@ do
             Console.WriteLine("Valor digitado inválido, digite novamente: ");
             break;
     }
+        
+        
+   
 }
 while (!executado);
 

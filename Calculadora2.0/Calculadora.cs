@@ -78,7 +78,9 @@
             }
 
             return historico;
+            
         }
+
         //Metodos da classe
 
 
