@@ -8,8 +8,8 @@ var calculadora = new Calculadora();
 
 do
 {
-    Console.WriteLine("Como deseja começar?");
-    Console.WriteLine("\tc - Quero usar a calculadora");
+    Console.WriteLine("Escolha as opções abaixo:");
+    Console.WriteLine("\tc - Calculadora");
     Console.WriteLine("\to - Outro:");
     var CouO = Console.ReadLine();
     if (CouO == "c") {
@@ -30,6 +30,7 @@ do
     else
     {
         Console.WriteLine("\th - Historico de operaçoes");
+        Console.WriteLine("\tt - Soma dos Resultados");
         
         Console.WriteLine("\tf - Finalizar");
     }
@@ -67,7 +68,11 @@ do
 
             Console.WriteLine(historico);
             break;
-        
+        case "t":
+            var somao = $"===========SOMA TOTAL DOS RESULTADOS======\n";
+               somao += calculadora.TotalResultados();
+             Console.WriteLine($"O valor total dos resultado do historico é :{somao}\t");
+            break;
         case "f":
             Console.WriteLine("Obrigado por usar a minha calculadora!");
             executado = true;
