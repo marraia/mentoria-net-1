@@ -1,4 +1,4 @@
-﻿namespace SMP
+﻿namespace SMP.Entidades
 {
     public class Item
     {

@@ -1,5 +1,4 @@
-﻿
-namespace SMP
+﻿namespace SMP.Entidades
 {
     public class Cliente
     {
