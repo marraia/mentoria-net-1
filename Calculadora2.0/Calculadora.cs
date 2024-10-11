@@ -85,7 +85,7 @@
             float somaTotal = 0;
             foreach (var item in Historico)
             {
-                somaTotal +=item.Resultado;
+                somaTotal += item.Resultado;
             }
 
             return somaTotal;
