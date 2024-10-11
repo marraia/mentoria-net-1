@@ -69,9 +69,8 @@ do
             Console.WriteLine(historico);
             break;
         case "t":
-            var somao = $"===========SOMA TOTAL DOS RESULTADOS======\n";
-               somao += calculadora.TotalResultados();
-             Console.WriteLine($"O valor total dos resultado do historico é :{somao}\t");
+            var somao = calculadora.TotalResultados();
+             Console.WriteLine($"========SOMA TOTAL========:\t{somao}\t");
             break;
         case "f":
             Console.WriteLine("Obrigado por usar a minha calculadora!");
