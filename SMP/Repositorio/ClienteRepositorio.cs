@@ -3,7 +3,7 @@ namespace SMP.Repositorio
 {
     public class ClienteRepositorio
     {
-        public List<Cliente> ObterClientes()
+        private List<Cliente> ObterClientes()
         {
             var lista = new List<Cliente>();
             lista.Add(new Cliente() { CPF = "09809809890", Id = Guid.NewGuid(), Nome = "Silvio Santos" });

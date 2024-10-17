@@ -1,4 +1,6 @@
 ﻿
+using SMP.Servico;
+
 bool sair = false;
 
 do
@@ -8,19 +10,30 @@ do
     Console.WriteLine("Escolha entre as opções a seguir: ");
     Console.WriteLine("\tc - Cliente");
     Console.WriteLine("\tv - Vendedor");
+
+
     var clientOrVendor = Console.ReadLine();
     if (clientOrVendor == "c")
     {
+        var clienteServico = new ClienteServico();
+
         Console.WriteLine("Olá, ");
         Console.WriteLine("Digite seu CPF: ");
         var CPF = Console.ReadLine();
-        Console.WriteLine("-------------------------");
-        Console.WriteLine("O que deseja fazr agora?");
-        Console.WriteLine("\tl - Compras");
-        Console.WriteLine("\tp - Métodos de pagamentos");
-        Console.WriteLine("\ts- Sair");
 
-
+        var logado = clienteServico.LoginCliente(CPF);
+        if (logado is not null)
+        {
+            Console.WriteLine($"============== Olá { logado.Nome } !! ================");
+            Console.WriteLine("O que deseja fazer agora?");
+            Console.WriteLine("\tb - Compras");
+            Console.WriteLine("\tp - Minhas compras");
+            Console.WriteLine("\te- Sair");
+        }
+        else
+        {
+            Console.WriteLine("Seu CPF não foi encontrado, por favor tente novamente!"); //TODO: MELISSA -> RESOLVER O LOOP
+        }
     }
     else if (clientOrVendor == "v")
     {
@@ -30,13 +43,14 @@ do
         Console.WriteLine("==============================");
         Console.WriteLine("O que deseja exibir? ");
         Console.WriteLine("\tr - Relatório de Vendas");
-        Console.WriteLine("\ts - Sair");
+        Console.WriteLine("\te - Sair");
     }
     var userOP = Console.ReadLine();
     switch (userOP)
     {
-        case "l":
-            Console.WriteLine("===========Loja===========");
+        case "b":
+            MostrarPrateleiraVirtual();
+            InteracaoCompra();
             break;
         case "p":
             Console.WriteLine("=============Pagamentos=============");
@@ -44,10 +58,80 @@ do
         case "r":
             Console.WriteLine("=================Relátorios de Vendas===================");
             break;
-        case "s":
+        case "e":
             sair = true;
             break;
 
 
     }
 } while (!sair);
+
+
+void MostrarPrateleiraVirtual()
+{
+    var venda = new VendaServico();
+    var itens = venda.ObterItensPrateleira();
+
+    Console.WriteLine("=========== Prateleira Virtual ===========");
+
+    foreach (var item in itens)
+    {
+        Console.WriteLine($"=> {item.Id} - {item.Descricao} - {item.Valor.ToString("c")}");
+    }
+}
+
+void InteracaoCompra()
+{
+    var sair = false;
+    var venda = new VendaServico();
+    do
+    {
+        Console.WriteLine("Deseja realizar qual operação?");
+        Console.WriteLine("\tb - Comprar Item");
+
+        if (venda.CarrinhoCompra.Count > 0)
+        {
+            Console.WriteLine("\tf - Fechar Compra");
+            Console.WriteLine("\tv - Visualizar Carrinho de Compra");
+        }
+
+        Console.WriteLine("\te - Voltar Menu Anterior");
+        var opacao = Console.ReadLine();
+
+        switch (opacao)
+        {
+            case "b":
+                Console.WriteLine("Digite o Id do Item");
+                var opcaoItem = Console.ReadLine();
+                var item = venda.ObterItemPorId(Guid.Parse(opcaoItem));
+
+                if (item is null)
+                {
+                    Console.WriteLine("Item não encontrado!! Favor tentar novamnte!"); //TODO: MELISSA => LOOP
+                }
+                else
+                {
+                    venda.AdicionarCarrinhoCompra(item);
+                }
+                break;
+            case "v":
+                Console.WriteLine($"==== ITENS CARREINHO DE COMPRA ({venda.CarrinhoCompra.Count})=======");
+                foreach(var itemCompra in venda.CarrinhoCompra)
+                {
+                    Console.WriteLine($"=> {itemCompra.Id} - {itemCompra.Descricao} - {itemCompra.Valor.ToString("c")}");
+                }
+                break;
+            case "f":
+                Console.WriteLine("FECHAMENTO DE PEDIDO");
+                var pedido = venda.FecharPedido();
+                Console.WriteLine($"PEDIDO ID {pedido.Id} | Data: {pedido.Data} | Valor : {pedido.Valor}");
+
+                //TODO: FLUCO DE PAGAMENTO
+                break;
+            default:
+                sair = true;
+                break;
+        }
+    }
+    while (!sair);
+}
