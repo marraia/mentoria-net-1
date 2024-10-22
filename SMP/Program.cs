@@ -22,18 +22,29 @@ do
         var CPF = Console.ReadLine();
 
         var logado = clienteServico.LoginCliente(CPF);
-        if (logado is not null)
+
+        do
         {
-            Console.WriteLine($"============== Olá { logado.Nome } !! ================");
-            Console.WriteLine("O que deseja fazer agora?");
-            Console.WriteLine("\tb - Compras");
-            Console.WriteLine("\tp - Minhas compras");
-            Console.WriteLine("\te- Sair");
-        }
-        else
-        {
-            Console.WriteLine("Seu CPF não foi encontrado, por favor tente novamente!"); //TODO: MELISSA -> RESOLVER O LOOP
-        }
+            if (logado == null)
+            {
+
+                Console.WriteLine("Seu CPF não foi encontrado, por favor tente novamente!"); //TODO: Resolvido!
+                Console.WriteLine("Digite seu CPF: ");
+                CPF = Console.ReadLine();
+                logado = clienteServico.LoginCliente(CPF);
+            }
+
+
+            if (logado is not null)
+            {
+                Console.WriteLine($"============== Olá {logado.Nome} !! ================");
+                Console.WriteLine("O que deseja fazer agora?");
+                Console.WriteLine("\tb - Compras");
+                Console.WriteLine("\tp - Minhas compras");
+                Console.WriteLine("\te- Sair");
+            }
+
+        } while (logado == null);
     }
     else if (clientOrVendor == "v")
     {
@@ -107,7 +118,10 @@ void InteracaoCompra()
 
                 if (item is null)
                 {
-                    Console.WriteLine("Item não encontrado!! Favor tentar novamnte!"); //TODO: MELISSA => LOOP
+                    Console.WriteLine("Item não encontrado!! Favor tentar novamnte!"); //TODO: Resolvido?
+                    Console.WriteLine("Digite o Id do Item");
+                    opcaoItem = Console.ReadLine();
+                    item = venda.ObterItemPorId(Guid.Parse(opcaoItem));
                 }
                 else
                 {
