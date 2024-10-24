@@ -14,7 +14,14 @@ Funcionalidades:
         - Quais anos do nascimento são números pares
     - Editar os dados do usuários
         - Pesquisar o usuários pelo CPF
-        - Alterar os dados do usuários *************
+        - Alterar os dados do usuários ************* (Remove) (Add)
+
+- Laços
+- Condicionais
+- Lista
+
+
+- Um algoritmo sempre é um passo a passo (receita de bolo)...
 
 */
 
