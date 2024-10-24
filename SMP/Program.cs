@@ -1,7 +1,9 @@
 ﻿
+using SMP.Entidades;
 using SMP.Servico;
 
 bool sair = false;
+List<Pedido> listaPedidos = new List<Pedido>();
 
 do
 {
@@ -22,7 +24,6 @@ do
         var CPF = Console.ReadLine();
 
         var logado = clienteServico.LoginCliente(CPF);
-
         do
         {
             if (logado == null)
@@ -129,7 +130,7 @@ void InteracaoCompra()
                 }
                 break;
             case "v":
-                Console.WriteLine($"==== ITENS CARREINHO DE COMPRA ({venda.CarrinhoCompra.Count})=======");
+                Console.WriteLine($"==== ITENS CARRINHO DE COMPRA ({venda.CarrinhoCompra.Count})=======");
                 foreach(var itemCompra in venda.CarrinhoCompra)
                 {
                     Console.WriteLine($"=> {itemCompra.Id} - {itemCompra.Descricao} - {itemCompra.Valor.ToString("c")}");
@@ -139,6 +140,7 @@ void InteracaoCompra()
                 Console.WriteLine("FECHAMENTO DE PEDIDO");
                 var pedido = venda.FecharPedido();
                 Console.WriteLine($"PEDIDO ID {pedido.Id} | Data: {pedido.Data} | Valor : {pedido.Valor}");
+                listaPedidos.Add(pedido);
 
                 //TODO: FLUCO DE PAGAMENTO
                 break;
