@@ -35,6 +35,7 @@ if (novoUsuario == "n")
 {
    
         CadastroOP();
+     OpçoesUsuario();
     do
     {
         OpcoesCadastro();
@@ -77,11 +78,33 @@ void CadastroOP()
     var datanasc = Convert.ToDateTime(Console.ReadLine());
     usuario.AdicionarUsuario(cpf, nomeCompleto, email, datanasc);
     Console.WriteLine($"Cadastro realizado com sucesso!");
+    
+    
+
+}
+void OpçoesVoltar()
+{
     Console.WriteLine(" A seguir suas opções: ");
     Console.WriteLine("\tu - Visualizar usuarios cadastrados");
     Console.WriteLine("\ta - Cadastrar novamente");
+    Console.WriteLine("\to - Ano Par ou Impar");
+    Console.WriteLine("\tv - Voltar");
     Console.WriteLine("\te - Sair");
 }
+void ParouImpar()
+    
+{
+    Console.WriteLine("Digite o ano de seu nascimento novamente.");
+    var anonascimento = int.Parse(Console.ReadLine());
+    if(anonascimento % 2 == 0)
+    {
+        Console.WriteLine($"O ano de {anonascimento} foi um ano par");
+    }else
+    {
+        Console.WriteLine($"O ano de {anonascimento} foi um ano ímpar");
+    }
+}
+
 void OpcoesCadastro()
 {
     var userOP = Console.ReadLine();
@@ -89,17 +112,26 @@ void OpcoesCadastro()
     {
         case "u":
             var exibir = usuario.ExibirUsuarios();
+           
             Console.WriteLine("===============Usuarios Cadastrados=============\n");
-            Console.WriteLine($"{exibir}");
+            Console.WriteLine(exibir);
 
-            Console.WriteLine("\ta - Cadastrar novamente");
-            Console.WriteLine("\te - Sair");
+            OpçoesUsuario();
             break;
         case "a":
             CadastroOP();
+            OpçoesUsuario();
+            break;
+        case "o":
+            ParouImpar();
+
+            OpçoesUsuario();
             break;
         case "e":
             sair = true;
+            break;
+        case "v":
+            OpçoesUsuario();
             break;
     }
 }

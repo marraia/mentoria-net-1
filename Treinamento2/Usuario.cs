@@ -50,7 +50,6 @@ namespace Treinamento2
             }
             return usuario;
         }
-
         
     }
 

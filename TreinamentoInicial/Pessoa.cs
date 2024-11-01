@@ -14,7 +14,10 @@ namespace TreinamentoInicial
 
         public void CalcularIdade(DateTime dataAniversario)
         {
+            
             Idade = DateTime.Now.Year - dataAniversario.Year;
+
+           
         }
     }
 }
