@@ -18,9 +18,9 @@ namespace Treinamento2
         public DateTime Data { get; set; }
         private List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
-        
+
         //adicionar usuarios
-       public void AdicionarUsuario(string cpf, string nome, string email, DateTime datanasc)
+        public void AdicionarUsuario(string cpf, string nome, string email, DateTime datanasc)
         {
             var usuario = new Usuario
             {
@@ -30,12 +30,12 @@ namespace Treinamento2
                 Email = email,
                 DataNasc = datanasc
             };
-          Usuarios.Add(usuario);
+            Usuarios.Add(usuario);
         }
         //idade do usuario
         public double Idade()
         {
-           var Idade = Data.Year - DataNasc.Year;
+            var Idade = Data.Year - DataNasc.Year;
             return Idade;
         }
 
@@ -45,14 +45,26 @@ namespace Treinamento2
             var usuario = string.Empty;
             foreach (var user in Usuarios)
             {
-                usuario += $" Data de cadastro: {user.Data} | Cpf: {user.CPF} | Nome : {user.Nome} | Email: {user.Email} | Data de Nascimento: {user.DataNasc.Year} | Idade: {user.Idade()} anos \n" ;
+                usuario += $" Data de cadastro: {user.Data} | Cpf: {user.CPF} | Nome : {user.Nome} | Email: {user.Email} | Data de Nascimento: {user.DataNasc.Year} | Idade: {user.Idade()} anos | Par ou Impar: {user.ParouImpar(DataNasc)} \n";
 
             }
             return usuario;
         }
-        
-    }
 
-    
+        public string ParouImpar(DateTime datanasc)
+
+        {
+            if (datanasc.Year % 2 == 0)
+            {
+                return "É par";
+            }
+
+            return "É impar";
+        }
+
+       
+
+
+    }
 }
 //CPF - Nome - Email - Data Nascimento -  DataCadastro
