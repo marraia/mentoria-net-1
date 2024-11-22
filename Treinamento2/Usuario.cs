@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO.Pipes;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection.Metadata;
 
 namespace Treinamento2
 {
-    public class Usuario
+    public class Usuario 
     {
         public string CPF { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public DateTime DataNasc { get; set; }
         public DateTime Data { get; set; }
+        public string TimeEscolhido { get; set; }
         private List<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
 
@@ -28,9 +22,12 @@ namespace Treinamento2
                 CPF = cpf,
                 Nome = nome,
                 Email = email,
-                DataNasc = datanasc
+                DataNasc = datanasc,
+                TimeEscolhido = TimeEscolhido
+
             };
             Usuarios.Add(usuario);
+
         }
         //idade do usuario
         public double Idade()
@@ -49,6 +46,26 @@ namespace Treinamento2
 
             }
             return usuario;
+        }
+
+
+
+        public string LoginClient(string cpf)
+        {
+            var cliente = Usuarios.Where(item => item.CPF == cpf).FirstOrDefault();
+
+            return $" Data de cadastro: {cliente.Data} | Cpf: {cliente.CPF} | Nome : {cliente.Nome} | Email: {cliente.Email} | Data de Nascimento: {cliente.DataNasc} | Idade: {cliente.Idade()} anos |Ano Par ou Impar: {cliente.ParouImpar(DataNasc)} \n";
+
+        }
+
+        public void EditarUsuario(string cpf, string nome, string email, DateTime datanasc)
+        {
+            var cliente = Usuarios.Where(item => item.CPF == cpf).FirstOrDefault();
+            Usuarios.Remove(cliente);
+            cliente.Nome = nome;
+            cliente.Email = email;
+            cliente.DataNasc = datanasc;
+            Usuarios.Add(cliente);
         }
 
         public string ParouImpar(DateTime datanasc)
