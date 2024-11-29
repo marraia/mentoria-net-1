@@ -54,6 +54,7 @@ namespace Treinamento2
         }
     }
 }
+
 /*-Qual time os usuarios torçem. propriedade nova
         - a quantidade total de cada time
         - criar uma nova opção no menu dizendo a quantidade de times cadastrados.

@@ -32,6 +32,7 @@ using System.Threading.Tasks.Sources;
 using Treinamento2;
 var usuario = new Usuario();
 var futebol = new Futebol();
+var relatorio = new Relatorio();
 
 bool sair = false;
 Console.WriteLine("=====================Bem vindo ao sistema de Cadastramento!=====================");
@@ -152,12 +153,27 @@ void OpcoesCadastro()
         case "e":
             sair = true;
             break;
+        case "o":
+            var obterTotal = relatorio.ObterQtdPorTimes();
+            
+            foreach ( var item in obterTotal )
+            {
+                Console.WriteLine ( $"Time: {item.Time}, Quantidade: {item.Qtd}" );
+            }
+            OpçoesVoltar();
+            break;
         case "f":
             
             TimeEscolhido();
             OpçoesVoltar();
             break;
-        
+        case "q":
+            var qtdTimes = relatorio.QtdTotal();
+            Console.WriteLine($"A quantidade de times cadastrados é de: {qtdTimes} Times.");
+            OpçoesVoltar();
+            break;
+
+
 
     }
 }
@@ -165,12 +181,12 @@ void OpcoesCadastro()
 void TimeEscolhido()
 {
     Console.WriteLine("+++++++++++++ TIMES DE FUTEBOL +++++++++++");
-    Console.WriteLine("Nos diga qual é o seu time de futebol do Rio:");
-    Console.WriteLine("escolhe e digite entre as opções: Vasco, Flamengo, Botafogo , Fluminense ou nenhum.");
-    Console.WriteLine("Escolha um time: v (Vasco), f (Flamengo), b (Botafogo), t (Fluminense):");
+    Console.WriteLine("Nos diga qual é o seu time de futebol:");
     var timeEscolhido = Console.ReadLine();
-    futebol.AdicionarVoto(timeEscolhido);
-    futebol.ExibirResultados();
+    relatorio.AdicionarTime(timeEscolhido);
+    
+
+
 }
 
         
@@ -224,6 +240,8 @@ void OpçoesVoltar()
     Console.WriteLine("\tc - Editar Dados");
     Console.WriteLine("\ta - Cadastrar novamente");
     Console.WriteLine("\tf - Seguir para os times de futebol");
+    Console.WriteLine("\tq - Saber a quantidade total de times cadastrados");
+    Console.WriteLine("\to - Saber a quantidade total por time cadastrado");
     Console.WriteLine("\te - Sair");
 }
 
