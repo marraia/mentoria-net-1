@@ -24,6 +24,8 @@ Funcionalidades:
 
 - Um algoritmo sempre é um passo a passo (receita de bolo)...
 
+- refazer o projeto
+
 */
 
 
