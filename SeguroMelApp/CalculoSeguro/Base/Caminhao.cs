@@ -18,7 +18,7 @@ namespace SeguroMelApp.CalculoSeguro.Base
         public override void CalcularSeguro()
         {
            var genero = GeneroDoMotorista.ToString();
-            if (genero == "Masculino")
+            if (genero == "M")
             {
                 var valorCalculo = ((ValorDoBem * 12) / 100);
                 ValorSeguro = valorCalculo;
@@ -30,8 +30,7 @@ namespace SeguroMelApp.CalculoSeguro.Base
             }
         }
 
-       
-
+ 
 
     }
 }

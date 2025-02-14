@@ -18,10 +18,6 @@ namespace SeguroMelApp.CalculoSeguro.Base
             Ano= ano;
         }
 
-        public void ExibirContrato()
-        {
-            base.ExibirContrato();
-            Console.WriteLine($"Placa do Carro:{Placa} - Ano: {Ano} - Modelo: {Modelo} ");
-        }
+       
     }
 }

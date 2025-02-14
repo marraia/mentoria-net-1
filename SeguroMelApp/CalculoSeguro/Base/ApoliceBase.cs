@@ -11,7 +11,7 @@ namespace SeguroMelApp.CalculoSeguro.Base
         public decimal ValorSeguro { get; set; }
         public decimal ValorDoBem { get; set; }
         public DateTime DataBasica { get; set; }
-
+       
 
         public virtual void CalcularSeguro()
         {
@@ -28,28 +28,31 @@ namespace SeguroMelApp.CalculoSeguro.Base
             }
         }
 
-        public void InformarDadosDaApolice(string nome, decimal valorDoBem, DateTime dataBasica)
+        public void InformarDadosDaApolice(string nome, decimal valorDoBem, DateTime? dataBasica = null)
         {
             Nome = nome;
             ValorDoBem = valorDoBem;
-            DataBasica = dataBasica;
+            if (dataBasica != null) 
+            {
+                DataBasica = dataBasica.Value;
+            }
+            
         }
 
-        public void InformarDadosDaApolice(string nome,DateTime dataBasica)
-        {
-            Nome = nome;
-            DataBasica = dataBasica;
-        }
+
+
         public void Contratar()
         {
             DataInicio = DateTime.Now;
             DataTermino = DateTime.Now.AddYears(1);
         }
 
-        public void ExibirContrato()
+       public void ExibirValor( )
         {
-            Console.WriteLine($"Nome do segurado: {Nome} - tipo de seguro: Carro - valor dos bens: {ValorDoBem} - valor do Seguro mensal :{ValorSeguro} ");
+            Console.WriteLine($"Valor  do seguro : {ValorSeguro}");
         }
+
+
     }
 
 }
