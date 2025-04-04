@@ -16,11 +16,6 @@ namespace CalculodeSeguro.Repositorio
             var sql = "UPDATE ApoliceItem SET EspecialidadeId = @EspecialidadeId, ValorSeguro = @ValorSeguro WHERE Id = @Id";
         }
 
-        public void Excluir(int Id)
-        {
-            var sql = "DELETE FROM ApoliceItem WHERE Id = @Id";
-        }
-
         public void SelecionarPorId(int Id)
         {
             var sql = "SELECT * FROM ApoliceItem WHERE Id = @Id";

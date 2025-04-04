@@ -16,6 +16,11 @@ namespace CalculodeSeguro.Dominio
             ClienteId = clienteId;
         }
 
+        public Apolice()
+        {
+
+        }
+
         public void AtualizarId(int id)
         {
             Id = id;
@@ -27,5 +32,6 @@ namespace CalculodeSeguro.Dominio
             DataFim = DataInicio.AddYears(1);
         }
 
+        
     }
 }

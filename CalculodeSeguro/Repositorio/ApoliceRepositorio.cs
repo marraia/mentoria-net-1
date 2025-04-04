@@ -14,14 +14,10 @@ namespace CalculodeSeguro.Repositorio
             var sql = "UPDATE Apolice SET DataInicio = @DataInicio, DataFim = @DataFim WHERE numeroApolice = @NumeroApolice";
         }
 
-        public void Excluir(string numeroApolice)
-        {
-            var sql = "DELETE FROM Apolice WHERE NumeroApolice = @NumeroApolice";
-        }
-
-        public void SelecionarPorNumeroDaApolice(string numeroApolice)
+        public Apolice SelecionarPorNumeroDaApolice(string numeroApolice)
         {
             var sql = "SELECT * FROM Apolice WHERE NumeroApolice = @NumeroApolice";
+            return new Apolice();
         }
 
     }

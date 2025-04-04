@@ -20,6 +20,11 @@ namespace CalculodeSeguro.Dominio
             Endereco = endereco;
         }
 
+        public Cliente()
+        {
+            
+        }
+
         public void AtualizarId(int id)
         {
             Id = id;

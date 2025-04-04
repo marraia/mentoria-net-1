@@ -1,4 +1,7 @@
-﻿Console.WriteLine("----------Seguros Resguardos----------");
+﻿using CalculodeSeguro.Dominio;
+using CalculodeSeguro.Servicos;
+
+Console.WriteLine("----------Seguros Resguardos----------");
 Console.WriteLine("Peça um orçamento!");
 Console.WriteLine("\t1 - Fazer um orçamento");
 Console.WriteLine("\t2 - Sair");
@@ -24,8 +27,8 @@ else
     Console.WriteLine("Endereço:");
     var Endereco = Console.ReadLine();
     Console.WriteLine("Deseja Confirmar suas informações? (S/N)");
-    var confirmacao = Console.ReadLine();
-    if(confirmacao != "S")
+    var confirmacao = Console.ReadLine().ToUpper();
+    if (confirmacao != "S")
     {
         Console.WriteLine("Por favor, digite novamente suas informações:");
         Console.WriteLine("Nome Completo:");
@@ -41,6 +44,9 @@ else
     }else
     {
         Console.WriteLine("Obrigado! Agora vamos para a próxima etapa!");
+        var cliente = new Cliente(NomeCompleto, CPF, Email, Telefone, Endereco);
+        var clienteServico = new ClienteServico();
+        clienteServico.CriarCliente(cliente);
     }
 }
 Console.WriteLine("Qual tipo de seguro deseja fazer?");
