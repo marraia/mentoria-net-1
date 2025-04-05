@@ -24,6 +24,10 @@ namespace CalculodeSeguro.Dominio
             ValorDoBem = valorDoBem;
         }
 
+        public Automotor()
+        {
+        }
+
         public void AtualizarId(int id)
         {
             Id = id;

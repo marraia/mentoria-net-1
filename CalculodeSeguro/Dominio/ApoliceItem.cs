@@ -2,7 +2,7 @@
 {
     public class ApoliceItem
     {
-        public string Id { get; private set; }
+        public int Id { get; private set; }
         public string ApoliceId { get; private set; }
         public int CategoriaId { get; private set; }
         public int EspecialidadeId { get; private set; }
@@ -13,6 +13,10 @@
             ApoliceId = apoliceId;
             CategoriaId = categoriaId;
             
+        }
+
+        public ApoliceItem()
+        {
         }
 
         public void AtualizarId(string id)

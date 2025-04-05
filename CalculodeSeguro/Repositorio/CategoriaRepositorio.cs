@@ -4,9 +4,10 @@ namespace CalculodeSeguro.Repositorio
 {
     public class CategoriaRepositorio
     {
-     public void SelecionarPorId(int Id)
+     public Categoria SelecionarPorId(int Id)
         {
             var sql = "SELECT * FROM Categoria WHERE Id = @Id";
+            return new Categoria(sql);
         }
     }
 }

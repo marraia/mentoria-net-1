@@ -9,9 +9,16 @@ namespace CalculodeSeguro.Repositorio
             var sql = "INSERT INTO Automotor (Marca, Modelo, AnoFabricacao, Valor) VALUES (@Marca, @Modelo, @AnoFabricacao, @Valor)";
         }
 
-        public void SelecionarPorId(int Id)
+        public Automotor SelecionarPorId(int Id)
         {
             var sql = "SELECT * FROM Automotor WHERE Id = @Id";
+            return new Automotor();
+        }
+
+        public Automotor SelecionarPorPlaca(string placa)
+        {
+            var sql = "SELECT * FROM Automotor WHERE Placa = @Placa";
+            return new Automotor();
         }
     }
 }

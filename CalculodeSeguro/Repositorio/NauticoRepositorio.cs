@@ -13,5 +13,11 @@ namespace CalculodeSeguro.Repositorio
         {
             var sql = "SELECT * FROM Nautico WHERE Id = @Id";
         }
+
+        public Nautico SelecionarPorRegistroEmbarcacao(string registroEmbarcacao)
+        {
+            var sql = "SELECT * FROM Nautico WHERE RegistroEmbarcacao = @RegistroEmbarcacao";
+            return new Nautico();
+        }
     }
 }

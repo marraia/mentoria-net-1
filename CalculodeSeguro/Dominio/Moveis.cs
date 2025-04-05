@@ -23,6 +23,10 @@ namespace CalculodeSeguro.Dominio
             ValorDoBem = valorDoBem;
         }
 
+        public Moveis()
+        {
+        }
+
         public void AtualizarId(int id)
         {
             Id = id;

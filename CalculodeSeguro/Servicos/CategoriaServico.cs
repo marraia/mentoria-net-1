@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalculodeSeguro.Dominio;
+using CalculodeSeguro.Repositorio;
 
 namespace CalculodeSeguro.Servicos
 {
-    internal class CategoriaRepositorio
+    public  class CategoriaServico
     {
+        public void EscolherCategoria(Categoria categoria)
+        {
+            
+            var categorias = new CategoriaRepositorio();
+            var categoriaEscolhida = categorias.SelecionarPorId(categoria.Id);
+
+
+        }
+
     }
 }

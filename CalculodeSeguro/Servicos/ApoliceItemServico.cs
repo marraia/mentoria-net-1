@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using CalculodeSeguro.Dominio;
+using CalculodeSeguro.Repositorio;
 
 namespace CalculodeSeguro.Servicos
 {
-    internal class ApoliceItemRepositorio
+    public class ApoliceItemServico
     {
+        public void ItensApolice(ApoliceItem apoliceItem)
+        {
+            var itensDaApolice = new ApoliceItemRepositorio();
+            var itensEscolhidos = itensDaApolice.SelecionarPorId(apoliceItem.Id);
+        }
     }
 }

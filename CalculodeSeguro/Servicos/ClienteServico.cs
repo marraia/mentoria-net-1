@@ -9,7 +9,7 @@ namespace CalculodeSeguro.Servicos
         public void CriarCliente(Cliente cliente)
         {
             var clienteRepositorio = new ClienteRepositorio();
-            var clienteExistente = clienteRepositorio.SelecionarPorCpf(cliente.CPF);
+            var clienteExistente = clienteRepositorio.Selecionar(cliente.Id);
             if (clienteExistente != null)
             {
                 Console.WriteLine("Cliente já cadastrado");

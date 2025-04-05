@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalculodeSeguro.Dominio;
+using CalculodeSeguro.Repositorio;
 
 namespace CalculodeSeguro.Servicos
 {
-    internal class AutomotorServicos
+    public class AutomotorServicos
     {
+
+        public void CriarAutomotor(Automotor automotor)
+        {
+            var automotorRepositorio = new AutomotorRepositorio();
+            var automotorExistente = automotorRepositorio.SelecionarPorId(automotor.Id);
+            {
+                Console.WriteLine("Automotor já cadastrado.");
+            }
+            automotorRepositorio.Inserir(automotor);
+        }
     }
 }

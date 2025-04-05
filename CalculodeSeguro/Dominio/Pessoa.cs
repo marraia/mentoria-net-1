@@ -17,6 +17,9 @@ namespace CalculodeSeguro.Dominio
             Profissao = profissao;
             DataDeNascimento = dataDeNascimento;
         }
+        public Pessoa()
+        {
+        }
         public void AtualizarId(int id)
         {
             Id = id;

@@ -15,6 +15,9 @@ namespace CalculodeSeguro.Dominio
             TipoEmbarcacao = tipoEmbarcacao;
             Ano = ano;
         }
+        public Nautico()
+        {
+        }
 
         public void AtualizarId(int id)
         {
