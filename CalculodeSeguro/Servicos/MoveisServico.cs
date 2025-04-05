@@ -15,9 +15,9 @@ namespace CalculodeSeguro.Servicos
                 Console.WriteLine("Moveis já cadastrados.");
                 return;
             }
-
-            Moveis moveis = moveis;
             moveisRepositorio.Inserir(moveis);
         }
     }
 }
+
+

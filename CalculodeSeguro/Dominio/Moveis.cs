@@ -1,5 +1,6 @@
 ﻿
 
+
 namespace CalculodeSeguro.Dominio
 {
     public class Moveis
@@ -31,5 +32,7 @@ namespace CalculodeSeguro.Dominio
         {
             Id = id;
         }
+
+        
     }
 }

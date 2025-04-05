@@ -12,9 +12,10 @@ namespace CalculodeSeguro.Repositorio
  
         
 
-        public void SelecionarPorId(int Id)
+        public Pessoa SelecionarPorId(int Id)
         {
             var sql = "SELECT * FROM Pessoa WHERE Id = @Id";
+            return new Pessoa();
         }
     }
 }

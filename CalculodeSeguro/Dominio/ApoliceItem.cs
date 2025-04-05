@@ -19,7 +19,7 @@
         {
         }
 
-        public void AtualizarId(string id)
+        public void AtualizarId(int id)
         {
             Id = id;
         }
