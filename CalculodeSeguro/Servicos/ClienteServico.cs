@@ -6,17 +6,18 @@ namespace CalculodeSeguro.Servicos
 {
     public class ClienteServico
     {
-        public void CriarCliente(Cliente cliente)
+        public int CriarCliente(Cliente cliente)
         {
             var clienteRepositorio = new ClienteRepositorio();
-            var clienteExistente = clienteRepositorio.Selecionar(cliente.Id);
+            var clienteExistente = clienteRepositorio.SelecionarPorCpf(cliente.CPF);
             if (clienteExistente != null)
             {
                 Console.WriteLine("Cliente já cadastrado");
-                return;
+                return clienteExistente.Id;
             }
-            clienteRepositorio.Inserir(cliente);
+            var clienteInserido =  clienteRepositorio.Inserir(cliente);
             Console.WriteLine("Cliente cadastrado com sucesso");
+            return clienteInserido;
 
         }
 
@@ -29,6 +30,8 @@ namespace CalculodeSeguro.Servicos
                 Console.WriteLine("Cliente não encontrado");
                 return default;
             }
+            Console.WriteLine("Cliente encontrado com sucesso");
+            Console.WriteLine($"Bem vindo de volta Sr(a) {cliente.NomeCompleto}");
             return clienteEncontrado;
         }
     }

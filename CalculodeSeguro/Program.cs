@@ -1,19 +1,16 @@
 ﻿using CalculodeSeguro.Dominio;
 using CalculodeSeguro.Servicos;
 
+var clienteId = 0;
 Console.WriteLine("----------Seguros Resguardos----------");
 Console.WriteLine("Peça um orçamento!");
 Console.WriteLine("\t1 - Fazer um orçamento");
-Console.WriteLine("\t2 - Sair");
+Console.WriteLine("\t2 - Já sou cliente!");
+Console.WriteLine("\t3 - Sair");
 Console.WriteLine("---------------------------------------");
 Console.WriteLine("Digite a opção desejada:");
 var opcao = Convert.ToInt32(Console.ReadLine());
-if (opcao == 2)
-{
-    Console.WriteLine("Obrigado por nos visitar!");
-    Environment.Exit(0);
-}
-else
+ if(opcao == 1)
 {
     Console.WriteLine("Otimo! Vamos começar! Abaixo nos diga suas informações:");
     Console.WriteLine("Nome Completo:");
@@ -41,12 +38,28 @@ else
         Telefone = Console.ReadLine();
         Console.WriteLine("Endereço:");
         Endereco = Console.ReadLine();
-    }else
+    }
+    else if(opcao == 2)
+    {
+       /* Console.WriteLine("Otimo! Vamos começar! Abaixo nos diga suas informações:");
+        Console.WriteLine("Cpf:");
+        CPF  = Console.ReadLine();
+        var clienteCadastrado = new Cliente(CPF);
+        var clienteServico = new ClienteServico();
+        clienteCadastrado = clienteServico.SelecionarClientePorCpf(clienteCadastrado);*/
+    }
+    
+    else if (opcao == 3) 
+    {
+        Console.WriteLine("Obrigado por nos visitar!");
+        Environment.Exit(0);  
+    }
+    else
     {
         Console.WriteLine("Obrigado! Agora vamos para a próxima etapa!");
         var cliente = new Cliente(NomeCompleto, CPF, Email, Telefone, Endereco);
         var clienteServico = new ClienteServico();
-        clienteServico.CriarCliente(cliente);
+        clienteId = clienteServico.CriarCliente(cliente);
     }
 }
 Console.WriteLine("Qual tipo de seguro deseja fazer?");
@@ -73,6 +86,11 @@ switch(tipoSeguro)
         var chassi = Console.ReadLine();
         Console.WriteLine("Digite o valor do veiculo:");
         var valor = Convert.ToDecimal(Console.ReadLine());
+
+        var automovel = new Automotor( placa, modelo, ano, chassi, valor);
+        var services = new AutomotorServicos();
+
+        services.CriarAutomotor(automovel,clienteId,tipoSeguro);
         break;
     case 2:
         Console.WriteLine("Seguro Nautico");

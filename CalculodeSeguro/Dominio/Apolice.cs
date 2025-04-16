@@ -10,9 +10,9 @@ namespace CalculodeSeguro.Dominio
         public int ClienteId { get; private set; }
 
 
-         public Apolice(string numeroApolice, int clienteId)
+         public Apolice(int clienteId)
         {
-            NumeroApolice = numeroApolice;
+            NumeroApolice = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Ticks}{DateTime.Now.Millisecond} ";
             ClienteId = clienteId;
         }
 

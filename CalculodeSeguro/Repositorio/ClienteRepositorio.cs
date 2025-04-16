@@ -1,8 +1,7 @@
-﻿
-
-using CalculodeSeguro.Dominio;
+﻿using CalculodeSeguro.Dominio;
 using CalculodeSeguro.Servicos;
 using Dapper;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -24,9 +23,19 @@ namespace CalculodeSeguro.Repositorio
             }
         }
 
-        public void Inserir(Cliente cliente)
+        public int Inserir(Cliente cliente)
         {
-            var sql = "insert into cliente (NomeCompleto, CPF, Email, Telefone, Endereco) values (@NomeCompleto, @CPF, @Email, @Telefone, @Endereco)";
+            var sql = "insert into cliente (NomeCompleto, CPF, Email, Telefone, Endereço) values (@NomeCompleto, @CPF, @Email, @Telefone, @Endereço)";
+
+            var clienteInserido = connection.ExecuteScalar<int>(sql, new 
+            {
+                cliente.NomeCompleto,
+                cliente.CPF,
+                cliente.Email,
+                cliente.Telefone,
+                cliente.Endereço
+            });
+            return clienteInserido;
         }
 
         public Cliente Selecionar(int id)
@@ -41,8 +50,38 @@ namespace CalculodeSeguro.Repositorio
         public Cliente SelecionarPorCpf(string cpf)
         {
             var sql = "select * from cliente where cpf = @cpf";
-            return new Cliente();
+
+            var cliente = connection
+                            .QuerySingleOrDefault<Cliente>(sql, new { Cpf = cpf });
+
+            return cliente;
         }
+
+        public void Atualizar(Cliente cliente)
+        {
+            var sql = "update cliente set NomeCompleto = @NomeCompleto, CPF = @CPF, Email = @Email, Telefone = @Telefone, Endereço = @Endereço where Id = @Id";
+            
+            var clienteAtualizado = connection.Execute(sql, new
+            {
+                cliente.NomeCompleto,
+                cliente.CPF,
+                cliente.Email,
+                cliente.Telefone,
+                cliente.Endereço,
+                cliente.Id
+            });
+            
+        }
+
+        public void Deletar(int id)
+        {
+            var sql = "delete from cliente where Id = @id";
+            var clienteDeletado = connection
+                            .Execute(sql, new { Id = id });
+            
+        }
+
+
     }
 }
 
@@ -58,6 +97,9 @@ namespace CalculodeSeguro.Repositorio
             return id;
         }
 
+
+
+
         public virtual async Task UpdateAsync(TEntity entity)
         {
             var query = "ComandoSQL"
@@ -68,6 +110,10 @@ namespace CalculodeSeguro.Repositorio
                            transaction: _transactionBase.GetDbTransaction())
              .ConfigureAwait(false);
         }
+
+
+
+
         public virtual async Task<int> DeleteAsync(TKey id)
         {
             var query = "ComandoSQL"
@@ -78,6 +124,11 @@ namespace CalculodeSeguro.Repositorio
                              transaction: _transactionBase.GetDbTransaction())
              .ConfigureAwait(false);
         }
+
+
+
+
+
         public virtual async Task<TEntity> GetByIdAsync(TKey id)
         {
             var query = "ComandoSQL"
