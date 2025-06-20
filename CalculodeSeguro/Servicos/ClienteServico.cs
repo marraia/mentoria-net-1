@@ -31,9 +31,11 @@ namespace CalculodeSeguro.Servicos
                 return default;
             }
             Console.WriteLine("Cliente encontrado com sucesso");
-            Console.WriteLine($"Bem vindo de volta Sr(a) {cliente.NomeCompleto}");
+            Console.WriteLine($"Bem vindo de volta Sr(a) {clienteEncontrado.NomeCompleto}");
             return clienteEncontrado;
         }
+
+        
     }
 }
  //selecionar por cpf e retornar o cliente,caso nao encontrado colocar mensagem de erro

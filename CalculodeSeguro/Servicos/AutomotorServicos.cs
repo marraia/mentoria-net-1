@@ -6,10 +6,11 @@ namespace CalculodeSeguro.Servicos
     public class AutomotorServicos
     {
 
-        public void CriarAutomotor(Automotor automotor, int ClienteId,int CategoriaId)
+        public void CriarAutomotor(Automotor automotor, int ClienteId, int CategoriaId)
         {
             var automotorRepositorio = new AutomotorRepositorio();
             var automotorExistente = automotorRepositorio.SelecionarPorId(automotor.Id);
+            if (automotorExistente != null)
             {
                 Console.WriteLine("Automotor já cadastrado.");
                 return;
@@ -24,5 +25,7 @@ namespace CalculodeSeguro.Servicos
             var apoliceItemRepositorio = new ApoliceItemRepositorio();
             apoliceItemRepositorio.Inserir(apoliceItem);
         }
+
     }
+       
 }

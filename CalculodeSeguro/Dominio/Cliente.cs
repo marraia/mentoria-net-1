@@ -3,8 +3,6 @@ namespace CalculodeSeguro.Dominio
 {
     public class Cliente
     {
-        private string? cpfCadastrado;
-
         public int Id  { get; private set; }
         public string NomeCompleto { get;  private set; }
         public string CPF { get; private set; }
@@ -27,7 +25,7 @@ namespace CalculodeSeguro.Dominio
             
         }
 
-       
+        
 
         public void AtualizarId(int id)
         {

@@ -1,4 +1,5 @@
 ﻿using CalculodeSeguro.Dominio;
+using CalculodeSeguro.Repositorio;
 using CalculodeSeguro.Servicos;
 
 var clienteId = 0;
@@ -39,21 +40,7 @@ var opcao = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Endereço:");
         Endereco = Console.ReadLine();
     }
-    else if(opcao == 2)
-    {
-       /* Console.WriteLine("Otimo! Vamos começar! Abaixo nos diga suas informações:");
-        Console.WriteLine("Cpf:");
-        CPF  = Console.ReadLine();
-        var clienteCadastrado = new Cliente(CPF);
-        var clienteServico = new ClienteServico();
-        clienteCadastrado = clienteServico.SelecionarClientePorCpf(clienteCadastrado);*/
-    }
     
-    else if (opcao == 3) 
-    {
-        Console.WriteLine("Obrigado por nos visitar!");
-        Environment.Exit(0);  
-    }
     else
     {
         Console.WriteLine("Obrigado! Agora vamos para a próxima etapa!");
@@ -61,6 +48,24 @@ var opcao = Convert.ToInt32(Console.ReadLine());
         var clienteServico = new ClienteServico();
         clienteId = clienteServico.CriarCliente(cliente);
     }
+
+}
+else if (opcao == 2)
+{
+    Console.WriteLine("Otimo! Vamos começar! Abaixo nos diga suas informações:");
+    Console.WriteLine("Cpf:");
+    var CpfCadastrado = Console.ReadLine();
+    // Update the instantiation of Cliente to match the constructor signature  
+    var clienteCadastrado = new Cliente("",CpfCadastrado, "", "", "");
+    var clienteServico = new ClienteServico();
+    clienteServico.SelecionarClientePorCpf(clienteCadastrado);
+
+}
+
+else if (opcao == 3)
+{
+    Console.WriteLine("Obrigado por nos visitar!");
+    Environment.Exit(0);
 }
 Console.WriteLine("Qual tipo de seguro deseja fazer?");
 Console.WriteLine("\t1 - Seguro de Automoveis");
@@ -74,14 +79,12 @@ switch(tipoSeguro)
 {
     case 1:
         Console.WriteLine("Seguro de Automoveis");
-        Console.WriteLine("Digite a marca do veiculo:");
-        var marca = Console.ReadLine();
+        Console.WriteLine("Digite a placa do veiculo:");
+        var placa = Console.ReadLine();
         Console.WriteLine("Digite o modelo do veiculo:");
         var modelo = Console.ReadLine();
         Console.WriteLine("Digite o ano do veiculo:");
         var ano = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("Digite a placa do veiculo:");
-        var placa = Console.ReadLine();
         Console.WriteLine("Digite o chassi do veiculo:");
         var chassi = Console.ReadLine();
         Console.WriteLine("Digite o valor do veiculo:");
@@ -91,6 +94,7 @@ switch(tipoSeguro)
         var services = new AutomotorServicos();
 
         services.CriarAutomotor(automovel,clienteId,tipoSeguro);
+        
         break;
     case 2:
         Console.WriteLine("Seguro Nautico");
@@ -124,8 +128,9 @@ Console.WriteLine("Deseja contratar o seguro? (S/N)");
 var contratar = Console.ReadLine();
 if (contratar == "S")
 {
+    var apolice = new Apolice(clienteId);
     Console.WriteLine("Parabéns! Seu seguro foi contratado com sucesso!");
-    Console.WriteLine("Sua apolice de seguro de numero: XXXXXXXXXX, funciona a partir do dia xx/xx/xxxx até o dia xx/xx/xxxx no valor de xx,xx");
+    Console.WriteLine($"Sua apolice de seguro de numero: {apolice.NumeroApolice}, funciona a partir do dia {apolice.DataInicio} até o dia {apolice.DataFim} no valor de xx,xx");
 }
 else
 {
