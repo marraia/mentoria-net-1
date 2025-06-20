@@ -124,6 +124,7 @@ switch(tipoSeguro)
         break;
         /*asdasdasdasdasd*/
 }
+Console.BackgroundColor = ConsoleColor.Green;
 Console.WriteLine("Sue orçamento ficou em xx,xx!");
 Console.WriteLine("Deseja contratar o seguro? (S/N)");
 var contratar = Console.ReadLine();
