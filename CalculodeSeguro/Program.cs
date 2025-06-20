@@ -122,6 +122,7 @@ switch(tipoSeguro)
     default:
         Console.WriteLine("Opção inválida!");
         break;
+        /*asdasdasdasdasd*/
 }
 Console.WriteLine("Sue orçamento ficou em xx,xx!");
 Console.WriteLine("Deseja contratar o seguro? (S/N)");
