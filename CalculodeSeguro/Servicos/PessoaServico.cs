@@ -19,3 +19,5 @@ namespace CalculodeSeguro.Servicos
      
     }
 }
+
+//pensar na estrutura do código,
